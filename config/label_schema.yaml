@@ -1,0 +1,19 @@
+prompt_version: weak_labeling_v1
+
+annotation_guideline: |
+  Read the input text and assign exactly one label. Focus only on evidence present in the text.
+  Prefer UNCERTAIN when the text is ambiguous, lacks enough context, or contains mixed signals.
+  Do not infer private facts, protected attributes, or unstated intent.
+
+labels:
+  - name: FRAUD
+    definition: "The text indicates potentially fraudulent, deceptive, unauthorized, or intentionally abusive activity."
+  - name: NOT_FRAUD
+    definition: "The text does not indicate fraudulent, deceptive, unauthorized, or intentionally abusive activity."
+  - name: UNCERTAIN
+    definition: "The available text is insufficient, ambiguous, or mixed, so a reliable fraud judgment cannot be made."
+
+output_fields:
+  label: "One of the configured label names."
+  confidence: "A number from 0.0 to 1.0 representing confidence in the label."
+  rationale: "A concise explanation grounded only in the input text."

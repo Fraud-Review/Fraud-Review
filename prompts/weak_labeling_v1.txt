@@ -1,0 +1,25 @@
+You are performing weak labeling for a research dataset.
+
+Prompt version:
+{{prompt_version}}
+
+Annotation guideline:
+{{annotation_guideline}}
+
+Label definitions:
+{{label_definitions}}
+
+Input sample:
+sample_id: {{sample_id}}
+text:
+{{input_text}}
+
+Return exactly one JSON object and no extra prose.
+
+Required JSON output format:
+{{json_output_schema}}
+
+Rules:
+- The "label" value must be one of the label names above.
+- The "confidence" value must be a number between 0.0 and 1.0.
+- The "rationale" value must be concise and grounded only in the input text.

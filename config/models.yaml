@@ -1,0 +1,47 @@
+prompt:
+  version: weak_labeling_v1
+  template_path: prompts/weak_labeling_v1.txt
+
+decoding:
+  temperature: 0.0
+  top_p: 1.0
+  max_new_tokens: 512
+  seed: 42
+
+runtime:
+  parse_retries: 2
+  output_merge_filename: merged_predictions.csv
+  summary_report_filename: summary_report.csv
+
+models:
+  - model_id: openai/gpt-oss-20b
+    model_family: gpt-oss
+    parameter_size: 20B
+    quantization: TBD
+    enabled: true
+    recommended_backend: mlx_or_ollama
+    notes: OpenAI open-weight model candidate for weak labeling.
+
+  - model_id: Qwen/Qwen3-14B
+    model_family: qwen
+    parameter_size: 14B
+    quantization: TBD
+    enabled: true
+    recommended_backend: mlx_or_transformers
+    notes: Strong multilingual candidate for Korean and English text labeling.
+
+  - model_id: google/gemma-4-31B-it
+    model_family: gemma
+    parameter_size: 31B
+    quantization: 4bit_recommended
+    enabled: true
+    recommended_backend: mlx_or_ollama
+    notes: Large instruction-tuned Gemma model. Use quantized or MLX-converted weights on Apple Silicon.
+
+  - model_id: meta-llama/Llama-3.1-8B-Instruct
+    model_family: llama
+    parameter_size: 8B
+    quantization: TBD
+    enabled: true
+    recommended_backend: mlx_or_ollama
+    notes: Lightweight baseline weak annotator.
